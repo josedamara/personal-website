@@ -59,6 +59,8 @@ function App() {
 
   return (
     <div className="App">
+    <meta name="description" content="Jose Damara Hadriana Personal Website" />
+    <meta name="keywords" content="Jose, Jose Damara, Jose Hadriana, Software Engineer, Data Analyst, Machine Learning, UBC, Vancouver, Bali" />
     <div className="root-container" id="about">
         <header style={{backgroundColor : backgroundColor}}>
             <div className="logo-container">
