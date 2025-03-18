@@ -155,7 +155,7 @@ function App() {
                     alt="Mail"></img>
                     <span>Email</span>
                 </div></a>
-                <a href="https://www.linkedin.com/in/jose-damara-hadriana/"><div className="contact linkedin">
+                <a href="https://www.linkedin.com/in/jose-damara-hadriana/" target="_blank" rel="noreferrer"><div className="contact linkedin">
                     <img src={linkedin}
                     alt="Mail"></img>
                     <span>LinkedIn</span>
