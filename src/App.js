@@ -5,6 +5,8 @@ import profilepic from './img/Profile picture.jpg';
 import doublearrow from './img/double-arrow.png';
 import moneytrackerapp from './img/MoneyTrackerApp.png';
 import heartdisease from './img/HeartDiseasePrediction.png';
+import financialadpersonanalysis from './img/FinancialAdPersonAnalysis.png';
+import braintactoe from './img/BrainTacToe.jpeg';
 import mail from './img/mail.png';
 import instagram from './img/Instagram Logo.png';
 import linkedin from './img/Linkedin.png';
@@ -54,6 +56,23 @@ function App() {
           githubLink: "https://github.com/wtarit/dsci-100-project",
           description: "A heart disease prediction report based on the Cleveland Heart Disease dataset on Kaggle. The whole process was done with R programming language in the JupyterLab platform. The prediction was done using KNN-algorithm with a testing accuracy of 0.9.",
           image: heartdisease
+        },
+        { name: "Financial Ad Person Analysis",
+            tools: ["Python", "JupyterLab", "PyTorch", "Selenium", "CNN"],
+            github: true,
+            githubLink: "https://github.com/josedamara/financial-ad-person-analysis",
+            description: "A financial ad analysis classification report based on scraped financial ad images from Google Images using Selenium. Built a simple CNN model to classify ads with person and without person existence.",
+            image: financialadpersonanalysis
+        },
+    ])
+
+    const [itemsTwo, setItemsTwo] = useState([
+        { name: "BrainTacToe",
+          tools: ["Python", "JavaScript", "HTML", "CSS"],
+          github: true,
+          githubLink: "https://github.com/Ivan-web-source/matchmind",
+          description: "A Python-based web app to improve learning quality through a combination of flashcard learning system with tic tac toe game. Each correct answer grants a turn to play the tic tac toe.",
+          image: braintactoe
         }
     ])
 
@@ -108,6 +127,38 @@ function App() {
         <p>A collection of projects I've worked on</p>
         <div className="project-container">
             {items.map((item) => (
+                <div className="project">
+                    <div
+                    style={{
+                        width: "20vw",
+                        height: "10vw",
+                        borderRadius: "1vw",
+                        background: `url(${item.image}) center/cover no-repeat`,
+                        position: "absolute"
+                    }}>
+                        <div
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                position: "relative",
+                                inset: 0,
+                                background: "linear-gradient(to bottom, rgba(0, 0, 0, 0), white)",
+                                borderRadius: "inherit"
+                            }}>
+                        </div>
+                    </div>
+                    <div className="project-body">
+                        <h3><a className="project-link" href={item.githubLink} target="_blank" rel="noreferrer">{item.name}</a></h3>
+                        {item.tools.map((tool) => (
+                            <span className="project-tool">{tool}</span>
+                        ))}
+                        <p className="project-description">{item.description}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div className="project-container">
+            {itemsTwo.map((item) => (
                 <div className="project">
                     <div
                     style={{
