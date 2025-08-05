@@ -76,6 +76,41 @@ function App() {
         }
     ])
 
+    const [listItems, setListItems] = useState([
+        [{ name: "MoneyTrackerApp",
+            tools: ["Java", "JUnit", "Swing"],
+            github: true,
+            githubLink: "https://github.com/josedamara/MoneyTrackerApp",
+            description: "A Java-based windows app to help one's track money flow with a lot of features, including filtering by various properties and allowing multiple bank accounts. The whole application was built using Java. The data is saved/loaded using JSON file and the UI was built using Java Swing library",
+            image: moneytrackerapp
+          },
+          {  name: "BrainTacToe",
+            tools: ["Python", "JavaScript", "HTML", "CSS"],
+            github: true,
+            githubLink: "https://github.com/Ivan-web-source/matchmind",
+            description: "A Python-based web app to improve learning quality through a combination of flashcard learning system with tic tac toe game. Each correct answer grants a turn to play the tic tac toe.",
+            image: braintactoe
+          }
+        ],
+        [
+          { name: "Heart Disease Prediction",
+            tools: ["R", "JupyterLab", "KNN"],
+            github: true,
+            githubLink: "https://github.com/wtarit/dsci-100-project",
+            description: "A heart disease prediction report based on the Cleveland Heart Disease dataset on Kaggle. The whole process was done with R programming language in the JupyterLab platform. The prediction was done using KNN-algorithm with a testing accuracy of 0.9.",
+            image: heartdisease
+          },
+          { name: "Financial Ad Person Analysis",
+              tools: ["Python", "JupyterLab", "PyTorch", "Selenium", "CNN"],
+              github: true,
+              githubLink: "https://github.com/josedamara/financial-ad-person-analysis",
+              description: "A financial ad analysis classification report based on scraped financial ad images from Google Images using Selenium. Built a simple CNN model to classify ads with person and without person existence.",
+              image: financialadpersonanalysis
+          }
+        ],
+        
+    ])
+
   return (
     <div className="App">
     <div className="root-container" id="about">
@@ -122,10 +157,45 @@ function App() {
         className="down-arrow"
         alt="Down Arrow"></img>
     </div>
-    <div className="body-container" id="projects">
+    <div className="body-container" id="projects" style={{height: `${listItems.length * 30 + 10}vw`}}>
         <h2 className="my-work">My Work</h2>
         <p>A collection of projects I've worked on</p>
-        <div className="project-container">
+        {listItems.map((list) => (
+            <div className="project-container">
+            {list.map((item) => (
+                <div className="project">
+                    <div
+                    style={{
+                        width: "20vw",
+                        height: "10vw",
+                        borderRadius: "1vw",
+                        background: `url(${item.image}) center/cover no-repeat`,
+                        position: "absolute"
+                    }}>
+                        <div
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                position: "relative",
+                                inset: 0,
+                                background: "linear-gradient(to bottom, rgba(0, 0, 0, 0), white)",
+                                borderRadius: "inherit"
+                            }}>
+                        </div>
+                    </div>
+                    <div className="project-body">
+                        <h3><a className="project-link" href={item.githubLink} target="_blank" rel="noreferrer">{item.name}</a></h3>
+                        {item.tools.map((tool) => (
+                            <span className="project-tool">{tool}</span>
+                        ))}
+                        <p className="project-description">{item.description}</p>
+                    </div>
+                </div>
+            ))}
+            </div>
+        ))}
+        
+        {/* <div className="project-container">
             {items.map((item) => (
                 <div className="project">
                     <div
@@ -188,7 +258,7 @@ function App() {
                     </div>
                 </div>
             ))}
-        </div>
+        </div> */}
     </div>
     <footer id="contact">
         <h6>Contact</h6>
