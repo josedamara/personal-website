@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import logo from './img/Logo.png';
+import favicon from './img/Favicon.png';
 import profilepic from './img/Profile picture.jpg';
 import doublearrow from './img/double-arrow.png';
 import moneytrackerapp from './img/MoneyTrackerApp.png';
@@ -99,12 +100,20 @@ function App() {
                 </div>
             </div>
         </header>
+        {/* My photo */}
         <div className="Photo">
-            <img
-            src={profilepic}
-            className="profilepic"
-            alt="Profile">
-            </img>
+            <span className="profilepic">
+                <img
+                src={favicon}
+                className="profilepic-back"
+                alt="Profile">
+                </img>
+                <img
+                src={profilepic}
+                className="profilepic-front"
+                alt="Profile">
+                </img>
+            </span>
         </div>
         <div className="Greetings">
             <p className="GreetingText">Hi! I'm Jose</p>

@@ -68,13 +68,43 @@ header {
 }
 
 .Photo {
+    perspective: 1000px;
+    height: 8.7vw;
     margin-top: 11vw;
     text-align: center;
 }
 
 .profilepic {
+    height: 8.7vw;
+    width: 8.7vw;
+}
+
+.profilepic-back {
+    position: absolute;
+    z-index: 1;
     width: 8.7vw;
     clip-path: circle(50%);
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+    transform: rotateY(180deg);
+}
+
+.profilepic-front {
+    position: relative;
+    z-index: 2;
+    width: 8.7vw;
+    clip-path: circle(50%);
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+    backface-visibility: hidden;
+}
+
+.profilepic:hover .profilepic-front {
+    transform: rotateY(180deg);
+}
+
+.profilepic:hover .profilepic-back {
+    transform: rotateY(360deg);
 }
 
 .Greetings {
