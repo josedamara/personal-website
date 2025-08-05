@@ -124,6 +124,12 @@ h1.Title-text {
     margin-top: 60vw;
     width: 2.5vw;
     opacity: 0.5;
+    transition: 0.2s ease-in-out;
+}
+
+.down-arrow:hover {
+    transform: scale(1.2);
+    opacity: 1;
 }
 
 .body-container {
@@ -170,6 +176,16 @@ p {
     background-color: white;
     border-radius: 2vw;
     margin: 0vw 2vw 0vw 2vw;
+    transition: transform 0.5s ease-in-out;
+}
+
+.project-image {
+    width: 20vw;
+    height: 10vw;
+}
+
+.project:hover {
+    transform: scale(1.1);
 }
 
 .project-body {
