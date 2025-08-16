@@ -113,11 +113,11 @@ function App() {
 
     useEffect(() => {
         if (window.innerWidth >= 768) {
-            setBodyHeight(listOfItems.length * 25 + 15);
+            setBodyHeight(listOfItems.length * 30 + 10 + "vw");
         } else {
-            setBodyHeight(listOfItems.length * 24 + 5);
+            setBodyHeight(listOfItems.length * 24 + 5 + "rem");
         }
-    })
+    }, [])
 
     // List of projects made
     const [listItems, setListItems] = useState([
@@ -228,7 +228,7 @@ function App() {
                         alt="Down Arrow"></img>
                 </a>
             </div>
-            <div className="body-container" id="projects" style={{ height: `${bodyHeight}rem` }}>
+            <div className="body-container" id="projects" style={{ height: `${bodyHeight}` }}>
                 <h2 className="my-work">My Work</h2>
                 <p className="collection">A collection of projects I've worked on</p>
                 {listOfItems.map((list) => (
