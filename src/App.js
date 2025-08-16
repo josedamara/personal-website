@@ -113,11 +113,12 @@ function App() {
 
     useEffect(() => {
         if (window.innerWidth >= 768) {
+            console.log("abc");
             setBodyHeight(listOfItems.length * 30 + 10 + "vw");
         } else {
             setBodyHeight(listOfItems.length * 24 + 5 + "rem");
         }
-    }, [])
+    },)
 
     // List of projects made
     const [listItems, setListItems] = useState([
