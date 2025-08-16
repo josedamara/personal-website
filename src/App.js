@@ -11,6 +11,7 @@ import braintactoe from './img/BrainTacToe.jpeg';
 import mail from './img/mail.png';
 import instagram from './img/Instagram Logo.png';
 import linkedin from './img/Linkedin.png';
+import triplebar from './img/Triple Bar.png';
 import './App.css';
 
 function App() {
@@ -43,168 +44,259 @@ function App() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [])
 
+    const [backgroundColorSaver, setBackgroundColorSaver] = useState("rgba(0, 0, 0, 0)");
+
+    function openMenu() {
+        if (window.innerWidth >= 768) {
+            return;
+        }
+
+        if (menuDisplay === "none") {
+            setMenuDisplay("block");
+            setDarkerDisplay("block");
+            setBackgroundColorSaver(backgroundColor);
+            setBackgroundColor("rgba(0, 0, 0, 1");
+            document.body.style.overflow = "hidden";
+        } else {
+            setMenuDisplay("none");
+            setDarkerDisplay("none");
+            setBackgroundColor(backgroundColorSaver);
+            document.body.style.overflow = "auto";
+        }
+    }
+
+    const [menuDisplay, setMenuDisplay] = useState(
+        window.innerWidth < 768 ? "none" : "block"
+    );
+
+    const [darkerDisplay, setDarkerDisplay] = useState(
+        "none"
+    );
+
+    const [listOfItems, setListOfItems] = useState([])
+
+    function splitProjects() {
+        if (window.innerWidth >= 768) {
+            let listOfItemsTemporary = [];
+
+            for (let i = 0; i < listItems.length; i++) {
+                if (i % 3 === 0) {
+                    listOfItemsTemporary.push([]);
+                }
+                listOfItemsTemporary[listOfItemsTemporary.length - 1].push(listItems[i][0]);
+
+            }
+
+            setListOfItems(listOfItemsTemporary);
+        } else {
+            setListOfItems(listItems);
+        }
+
+        return
+    }
+
+    useEffect(() => {
+        splitProjects();
+    }, []);
+
+    useEffect(() => {
+        function handleResize() {
+            splitProjects();
+        }
+
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, [])
+
+    const [bodyHeight, setBodyHeight] = useState("0");
+
+    useEffect(() => {
+        if (window.innerWidth >= 768) {
+            setBodyHeight(listOfItems.length * 25 + 15);
+        } else {
+            setBodyHeight(listOfItems.length * 24 + 5);
+        }
+    })
+
+    // List of projects made
     const [listItems, setListItems] = useState([
-        [{ name: "MoneyTrackerApp",
+        [{
+            name: "MoneyTrackerApp",
             tools: ["Java", "JUnit", "Swing"],
             github: true,
             githubLink: "https://github.com/josedamara/MoneyTrackerApp",
             description: "A Java-based windows app to help one's track money flow with a lot of features, including filtering by various properties and allowing multiple bank accounts. The whole application was built using Java. The data is saved/loaded using JSON file and the UI was built using Java Swing library",
             image: moneytrackerapp
-          },
-          {  name: "BrainTacToe",
+        }],
+        [{
+            name: "BrainTacToe",
             tools: ["Python", "JavaScript", "HTML", "CSS"],
             github: true,
             githubLink: "https://github.com/Ivan-web-source/matchmind",
             description: "A Python-based web app to improve learning quality through a combination of flashcard learning system with tic tac toe game. Each correct answer grants a turn to play the tic tac toe.",
             image: braintactoe
-          }
-        ],
-        [
-          { name: "Heart Disease Prediction",
+        }],
+        [{
+            name: "Heart Disease Prediction",
             tools: ["R", "JupyterLab", "KNN"],
             github: true,
             githubLink: "https://github.com/wtarit/dsci-100-project",
             description: "A heart disease prediction report based on the Cleveland Heart Disease dataset on Kaggle. The whole process was done with R programming language in the JupyterLab platform. The prediction was done using KNN-algorithm with a testing accuracy of 0.9.",
             image: heartdisease
-          },
-          { name: "Financial Ad Person Analysis",
-              tools: ["Python", "JupyterLab", "PyTorch", "Selenium", "CNN"],
-              github: true,
-              githubLink: "https://github.com/josedamara/financial-ad-person-analysis",
-              description: "A financial ad analysis classification report based on scraped financial ad images from Google Images using Selenium. Built a simple CNN model to classify ads with person and without person existence.",
-              image: financialadpersonanalysis
-          }
-        ],
-        
+        }],
+        [{
+            name: "Financial Ad Person Analysis",
+            tools: ["Python", "JupyterLab", "PyTorch", "Selenium", "CNN"],
+            github: true,
+            githubLink: "https://github.com/josedamara/financial-ad-person-analysis",
+            description: "A financial ad analysis classification report based on scraped financial ad images from Google Images using Selenium. Built a simple CNN model to classify ads with person and without person existence.",
+            image: financialadpersonanalysis
+        }]
     ])
 
-  return (
-    <div className="App">
-    <div className="root-container" id="about">
-        <header style={{backgroundColor : backgroundColor}}>
-            <div className="logo-container">
-                <img 
-                src={logo}
-                className="logo" 
-                alt="Logo"></img>
-            </div>
-            <div className="menu">
-                <div className="menu-list">
-                    <a className="menu-button" href="#contact">Contact</a>
-                </div>
-                <div className="menu-list">
-                    <a className="menu-button" href="#projects">Project</a>
-                </div>
-                <div className="menu-list">
-                    <a className="menu-button" href="#about">About</a>
-                </div>
-            </div>
-        </header>
-        {/* My photo */}
-        <div className="Photo">
-            <span className="profilepic">
-                <img
-                src={favicon}
-                className="profilepic-back"
-                alt="Profile">
-                </img>
-                <img
-                src={profilepic}
-                className="profilepic-front"
-                alt="Profile">
-                </img>
-            </span>
-        </div>
-        <div className="Greetings">
-            <p className="GreetingText">Hi! I'm Jose</p>
-        </div>
-        <div className="Title">
-            <h1 className="Title-text">Turning logic into software<br /> and data into insights</h1>
-        </div>
-        <div className="Description">
-            <h3 className="Description-text">I'm a Software Engineer and Data Analyst based in Vancouver.
-                <br />Interested in Front-End Development, Responsive Web Design, and Machine Learning
-            </h3>
-        </div>
-    </div>
-    <div className="body-struct">
-        {/* Arrow pointing down to projects */}
-        <a href="#projects">
-            <img src={doublearrow}
-            className="down-arrow"
-            alt="Down Arrow"></img>
-        </a>
-    </div>
-    <div className="body-container" id="projects" style={{height: `${listItems.length * 30 + 10}vw`}}>
-        <h2 className="my-work">My Work</h2>
-        <p>A collection of projects I've worked on</p>
-        {listItems.map((list) => (
-            <div className="project-container">
-            {list.map((item) => (
-                // A place containing each project
-                <div className="project">
-                    {/* Project image container */}
-                    <div
-                    className="project-image"
-                    style={{
-                        width: "20vw",
-                        height: "10vw",
-                        borderRadius: "1vw",
-                        background: `url(${item.image}) center/cover no-repeat`,
-                        position: "absolute"
-                    }}>
-                        {/* Gradation */}
-                        <div
-                            style={{
-                                width: "100%",
-                                height: "100%",
-                                position: "relative",
-                                inset: 0,
-                                background: "linear-gradient(to bottom, rgba(0, 0, 0, 0), white)",
-                                borderRadius: "inherit"
-                            }}>
+    return (
+        <div className="App">
+            {/* Container for the purple and black background */}
+            <div className="darker" style={{ display: darkerDisplay }} onClick={() => openMenu()}>&nbsp;</div>
+            <div className="root-container" id="about">
+                {/* Header to put logo and menus */}
+                <header style={{ backgroundColor: backgroundColor }}>
+                    {/* Logo */}
+                    <div className="logo-container">
+                        <img
+                            src={logo}
+                            className="logo"
+                            alt="Logo"></img>
+                        <img
+                            src={triplebar}
+                            className="triplebar"
+                            alt="Menu"
+                            onClick={() => openMenu()}></img>
+                    </div>
+                    {/* Menus */}
+                    <div className="menu" style={{ display: menuDisplay }}>
+                        {/* Contact */}
+                        <div className="menu-list">
+                            <a className="menu-button" href="#contact" onClick={() => { openMenu() }}>Contact</a>
+                        </div>
+                        {/* Project */}
+                        <div className="menu-list">
+                            <a className="menu-button" href="#projects" onClick={() => { openMenu() }}>Project</a>
+                        </div>
+                        {/* About */}
+                        <div className="menu-list">
+                            <a className="menu-button" href="#about" onClick={() => { openMenu() }}>About</a>
                         </div>
                     </div>
-                    {/* Project body container */}
-                    <div className="project-body">
-                        {/* Project name */}
-                        <h3><a className="project-link" href={item.githubLink} target="_blank" rel="noreferrer">{item.name}</a></h3>
-                        {/* Project tools list */}
-                        {item.tools.map((tool) => (
-                            <span className="project-tool">{tool}</span>
+                </header>
+                {/* My photo */}
+                <div className="Photo">
+                    <span className="profilepic">
+                        <img
+                            src={favicon}
+                            className="profilepic-back"
+                            alt="Profile">
+                        </img>
+                        <img
+                            src={profilepic}
+                            className="profilepic-front"
+                            alt="Profile">
+                        </img>
+                    </span>
+                </div>
+                {/* Greetings text */}
+                <div className="Greetings">
+                    <p className="GreetingText">Hi! I'm Jose</p>
+                </div>
+                {/* Title text */}
+                <div className="Title">
+                    <h1 className="Title-text">Turning logic into software<br /> and data into insights</h1>
+                </div>
+                {/* Personal description text */}
+                <div className="Description">
+                    <h3 className="Description-text">I'm a Software Engineer and Data Analyst based in Vancouver.
+                        <br />Interested in Front-End Development, Responsive Web Design, and Machine Learning
+                    </h3>
+                </div>
+            </div>
+            <div className="body-struct">
+                {/* Arrow pointing down to projects */}
+                <a href="#projects">
+                    <img src={doublearrow}
+                        className="down-arrow"
+                        alt="Down Arrow"></img>
+                </a>
+            </div>
+            <div className="body-container" id="projects" style={{ height: `${bodyHeight}rem` }}>
+                <h2 className="my-work">My Work</h2>
+                <p className="collection">A collection of projects I've worked on</p>
+                {listOfItems.map((list) => (
+                    <div className="project-container">
+                        {list.map((item) => (
+                            // A place containing each project
+                            <div className="project">
+                                {/* Project image container */}
+                                <div
+                                    className="project-image"
+                                    style={{
+                                        background: `url(${item.image}) center/cover no-repeat`,
+                                        position: "absolute"
+                                    }}>
+                                    {/* Gradation */}
+                                    <div
+                                        style={{
+                                            width: "100%",
+                                            height: "100%",
+                                            position: "relative",
+                                            inset: 0,
+                                            background: "linear-gradient(to bottom, rgba(0, 0, 0, 0), white)",
+                                            borderRadius: "inherit"
+                                        }}>
+                                    </div>
+                                </div>
+                                {/* Project body container */}
+                                <div className="project-body">
+                                    {/* Project name */}
+                                    <h3><a className="project-link" href={item.githubLink} target="_blank" rel="noreferrer">{item.name}</a></h3>
+                                    {/* Project tools list */}
+                                    <div className="tool-list">
+                                        {item.tools.map((tool) => (
+                                            <span className="project-tool">{tool}</span>
+                                        ))}
+                                    </div>
+                                    {/* Project description */}
+                                    <p className="project-description">{item.description}</p>
+                                </div>
+                            </div>
                         ))}
-                        {/* Project description */}
-                        <p className="project-description">{item.description}</p>
+                    </div>
+                ))}
+            </div>
+            <footer id="contact">
+                <h6>Contact</h6>
+                <div className="contact-container">
+                    <div>
+                        <div className="contact instagram"><a className="a-contact" href="https://www.instagram.com/jose.damara/" target="_blank" rel="noreferrer">
+                            <img src={instagram}
+                                alt="Instagram"></img>
+                            <span>Instagram</span>
+                        </a></div>
+                        <div className="contact email"><a className="a-contact" href="mailto:josedamara0211@gmail.com">
+                            <img src={mail}
+                                alt="Mail"></img>
+                            <span>Email</span>
+                        </a></div>
+                        <div className="contact linkedin"><a className="a-contact" href="https://www.linkedin.com/in/jose-damara-hadriana/" target="_blank" rel="noreferrer">
+                            <img src={linkedin}
+                                alt="Mail"></img>
+                            <span>LinkedIn</span>
+                        </a></div>
                     </div>
                 </div>
-            ))}
-            </div>
-        ))}
-    </div>
-    <footer id="contact">
-        <h6>Contact</h6>
-        <div className="contact-container">
-            <div>
-                <a href="https://www.instagram.com/jose.damara/" target="_blank" rel="noreferrer"><div className="contact instagram">
-                    <img src={instagram}
-                    alt="Instagram"></img>
-                    <span>Instagram</span>
-                </div></a>
-                <a href="mailto:josedamara0211@gmail.com"><div className="contact email">
-                    <img src={mail}
-                    alt="Mail"></img>
-                    <span>Email</span>
-                </div></a>
-                <a href="https://www.linkedin.com/in/jose-damara-hadriana/" target="_blank" rel="noreferrer"><div className="contact linkedin">
-                    <img src={linkedin}
-                    alt="Mail"></img>
-                    <span>LinkedIn</span>
-                </div></a>
-            </div>
+            </footer>
         </div>
-    </footer>
-    </div>
-  );
+    );
 }
 
 export default App;
