@@ -12,6 +12,7 @@ import mail from './img/mail.png';
 import instagram from './img/Instagram Logo.png';
 import linkedin from './img/Linkedin.png';
 import triplebar from './img/Triple Bar.png';
+import promptflow from './img/PromptFlow.png';
 import './App.css';
 
 function App() {
@@ -153,6 +154,14 @@ function App() {
             githubLink: "https://github.com/josedamara/financial-ad-person-analysis",
             description: "A financial ad analysis classification report based on scraped financial ad images from Google Images using Selenium. Built a simple CNN model to classify ads with person and without person existence.",
             image: financialadpersonanalysis
+        }],
+        [{
+            name: "PromptFlow",
+            tools: ["HTML", "CSS", "Figma"],
+            github: true,
+            githubLink: "https://github.com/potatotyper/PromptFlow",
+            description: "An automated prompt engineering as a service to improve your chatbot system prompt by gathering user satisfaction feedback, which then will be improved using RAG method. Mainly taking part as UI/UX designer as well as implementing it into HTML and CSS.",
+            image: promptflow
         }]
     ])
 
