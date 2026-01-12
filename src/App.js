@@ -13,6 +13,9 @@ import instagram from './img/Instagram Logo.png';
 import linkedin from './img/Linkedin.png';
 import triplebar from './img/Triple Bar.png';
 import promptflow from './img/PromptFlow.png';
+import trijebali from './img/TrijeBali.png';
+import insightUBC from './img/InsightUBC.png';
+import wasteNot from './img/WasteNot.png';
 import './App.css';
 
 function App() {
@@ -162,6 +165,28 @@ function App() {
             githubLink: "https://github.com/potatotyper/PromptFlow",
             description: "An automated prompt engineering as a service to improve your chatbot system prompt by gathering user satisfaction feedback, which then will be improved using RAG method. Mainly taking part as UI/UX designer as well as implementing it into HTML and CSS.",
             image: promptflow
+        }],
+        [{
+            name: "InsightUBC",
+            tools: ["RestAPI", "Express", "React", "Vite", "TypeScript", "Mocha", "Selenium", "TailwindCSS", "HTML"],
+            github: false,
+            description: "A web app that allows user to add and delete datasets containing valid UBC courses information. Built using React Typescript on the frontend and Typescript on the backend, with Express for the server. Additionally, implemented backend unit testing with Mocha + Chai testing, as well as Selenium E2E testing.",
+            image: insightUBC
+        }],
+        [{
+            name: "WasteNot",
+            tools: ["SQL", "Oracle", "JavaScript", "HTML"],
+            github: false,
+            description: "A web application for food waste management that tracks surplus ingredients, suggests recipes based on available food, and connects users with local donation options for unused items. Built using JavaScript on the frontend that allows user to access and modify data on the Oracle database.",
+            image: wasteNot
+        }],
+        [{
+            name: "Trije Bali",
+            tools: ["React", "Vite", "TypeScript", "TailwindCSS", "HTML", "Figma", "Cloudflare"],
+            github: true,
+            githubLink: "https://github.com/josedamara/website-trije-bali",
+            description: "A company website for a Balinese local coffee product, with a premium but authentic vibes. Developed using TypeScript on a React + Vite framework and deployed with Cloudflare.",
+            image: trijebali
         }]
     ])
 
