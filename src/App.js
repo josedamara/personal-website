@@ -16,6 +16,7 @@ import promptflow from './img/PromptFlow.png';
 import trijebali from './img/TrijeBali.png';
 import insightUBC from './img/InsightUBC.png';
 import wasteNot from './img/WasteNot.png';
+import ubcOpenRobotics from './img/UBCOpenRobotics.png';
 import './App.css';
 
 function App() {
@@ -187,6 +188,14 @@ function App() {
             githubLink: "https://github.com/josedamara/website-trije-bali",
             description: "A company website for a Balinese local coffee product, with a premium but authentic vibes. Developed using TypeScript on a React + Vite framework and deployed with Cloudflare.",
             image: trijebali
+        }],
+        [{
+            name: "UBC Open Robotics (deploying soon)",
+            tools: ["HTML", "TailwindCSS", "JavaScript", "Jekyll"],
+            github: true,
+            githubLink: "https://github.com/UBC-OpenRobotics/website",
+            description: "UBC Open Robotics profile website that provides complete information about the club activities and organization. Built using static Jekyll framework, that allows efficient website by minimizing rendering at runtime.",
+            image: ubcOpenRobotics
         }]
     ])
 
