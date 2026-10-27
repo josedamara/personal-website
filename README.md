@@ -1,4 +1,4 @@
-# Jose Damara Hadriana — Personal Website
+# Jose Damara Hadriana - Personal Website
 
 My portfolio site: a short intro, a grid of projects I've worked on, and ways to contact me.
 
