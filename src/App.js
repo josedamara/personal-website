@@ -141,14 +141,18 @@ function App() {
                         src={logo}
                         className="logo"
                         alt="Logo"></img>
-                    <img
-                        src={triplebar}
+                    <button
+                        type="button"
                         className="triplebar"
-                        alt="Menu"
-                        onClick={() => setMenuOpen(!menuOpen)}></img>
+                        aria-label="Menu"
+                        aria-expanded={menuOpen}
+                        aria-controls="site-menu"
+                        onClick={() => setMenuOpen(!menuOpen)}>
+                        <img src={triplebar} alt=""></img>
+                    </button>
                 </div>
                 {/* Menus */}
-                <nav className={menuOpen ? "menu open" : "menu"}>
+                <nav id="site-menu" className={menuOpen ? "menu open" : "menu"}>
                     <a className="menu-button" href="#about" onClick={() => setMenuOpen(false)}>About</a>
                     <a className="menu-button" href="#projects" onClick={() => setMenuOpen(false)}>Project</a>
                     <a className="menu-button" href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
@@ -175,9 +179,9 @@ function App() {
                 {/* Title text */}
                 <h1 className="Title-text">Turning logic into software<br /> and data into insights</h1>
                 {/* Personal description text */}
-                <h3 className="Description-text">I'm a Software Engineer and Data Analyst based in Vancouver.
+                <p className="Description-text">I'm a Software Engineer and Data Analyst based in Vancouver.
                     <br />Interested in Front-End Development, Responsive Web Design, and Machine Learning
-                </h3>
+                </p>
             </section>
             <section className="projects-section" id="projects">
                 {/* Arrow pointing down to projects */}
@@ -220,7 +224,7 @@ function App() {
                 </div>
             </section>
             <footer id="contact">
-                <h6>Contact</h6>
+                <h2 className="contact-title">Contact</h2>
                 <div className="contact-container">
                     <div className="contact instagram"><a className="a-contact" href="https://www.instagram.com/jose.damara/" target="_blank" rel="noreferrer">
                         <img src={instagram}
