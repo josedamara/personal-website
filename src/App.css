@@ -257,6 +257,8 @@ header {
 }
 
 .project {
+    display: flex;
+    flex-direction: column;
     padding: 0.75rem;
     background-color: white;
     border-radius: 1.5rem;
@@ -311,6 +313,12 @@ header {
     text-decoration: underline;
 }
 
+.external-mark {
+    margin-left: 0.3em;
+    font-size: 0.8em;
+    opacity: 0.6;
+}
+
 .tool-list {
     display: flex;
     gap: 0.5rem;
@@ -334,6 +342,42 @@ header {
     margin: 0.75rem 0 0;
     font-size: 0.85rem;
     line-height: 1.4;
+}
+
+/* Bottom row of the card, pushed down so it lines up across a grid row */
+.project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding: 0.75rem 0.25rem 0.25rem;
+}
+
+.github-link {
+    display: flex;
+    color: #303347;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.github-link:hover,
+.github-link:focus-visible {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+.github-link svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: currentColor;
+}
+
+.project-status {
+    padding: 0.25rem 0.6rem;
+    border-radius: 1rem;
+    background-color: #303347;
+    color: white;
+    font-size: 0.7rem;
 }
 
 /* ---------- Footer ---------- */

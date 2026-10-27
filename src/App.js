@@ -20,19 +20,19 @@ import ubcOpenRobotics from './img/UBCOpenRobotics.webp';
 import './App.css';
 
 // List of projects made
+// liveLink: deployed site (the title links here), githubLink: repo (shown as an icon),
+// status: optional small badge, e.g. "Deploying soon"
 const projects = [
     {
         name: "MoneyTrackerApp",
         tools: ["Java", "JUnit", "Swing"],
-        github: true,
         githubLink: "https://github.com/josedamara/MoneyTrackerApp",
-        description: "A Java-based windows app to help one's track money flow with a lot of features, including filtering by various properties and allowing multiple bank accounts. The whole application was built using Java. The data is saved/loaded using JSON file and the UI was built using Java Swing library",
+        description: "A Java-based windows app to help people track money flow with a lot of features, including filtering by various properties and allowing multiple bank accounts. The whole application was built using Java. The data is saved/loaded using JSON file and the UI was built using Java Swing library",
         image: moneytrackerapp
     },
     {
         name: "BrainTacToe",
         tools: ["Python", "JavaScript", "HTML", "CSS"],
-        github: true,
         githubLink: "https://github.com/Ivan-web-source/matchmind",
         description: "A Python-based web app to improve learning quality through a combination of flashcard learning system with tic tac toe game. Each correct answer grants a turn to play the tic tac toe.",
         image: braintactoe
@@ -40,7 +40,6 @@ const projects = [
     {
         name: "Heart Disease Prediction",
         tools: ["R", "JupyterLab", "KNN"],
-        github: true,
         githubLink: "https://github.com/wtarit/dsci-100-project",
         description: "A heart disease prediction report based on the Cleveland Heart Disease dataset on Kaggle. The whole process was done with R programming language in the JupyterLab platform. The prediction was done using KNN-algorithm with a testing accuracy of 0.9.",
         image: heartdisease
@@ -48,7 +47,6 @@ const projects = [
     {
         name: "Financial Ad Person Analysis",
         tools: ["Python", "JupyterLab", "PyTorch", "Selenium", "CNN"],
-        github: true,
         githubLink: "https://github.com/josedamara/financial-ad-person-analysis",
         description: "A financial ad analysis classification report based on scraped financial ad images from Google Images using Selenium. Built a simple CNN model to classify ads with person and without person existence.",
         image: financialadpersonanalysis
@@ -56,7 +54,6 @@ const projects = [
     {
         name: "PromptFlow",
         tools: ["HTML", "CSS", "Figma"],
-        github: true,
         githubLink: "https://github.com/potatotyper/PromptFlow",
         description: "An automated prompt engineering as a service to improve your chatbot system prompt by gathering user satisfaction feedback, which then will be improved using RAG method. Mainly taking part as UI/UX designer as well as implementing it into HTML and CSS.",
         image: promptflow
@@ -64,30 +61,29 @@ const projects = [
     {
         name: "InsightUBC",
         tools: ["RestAPI", "Express", "React", "Vite", "TypeScript", "Mocha", "Selenium", "TailwindCSS", "HTML"],
-        github: false,
-        description: "A web app that allows user to add and delete datasets containing valid UBC courses information. Built using React Typescript on the frontend and Typescript on the backend, with Express for the server. Additionally, implemented backend unit testing with Mocha + Chai testing, as well as Selenium E2E testing.",
+        description: "A web app that allows users to add and delete datasets containing valid UBC courses information. Built using React Typescript on the frontend and Typescript on the backend, with Express for the server. Additionally, implemented backend unit testing with Mocha + Chai testing, as well as Selenium E2E testing.",
         image: insightUBC
     },
     {
         name: "WasteNot",
         tools: ["SQL", "Oracle", "JavaScript", "HTML"],
-        github: false,
+        githubLink: "https://github.com/josedamara/WasteNot",
         description: "A web application for food waste management that tracks surplus ingredients, suggests recipes based on available food, and connects users with local donation options for unused items. Built using JavaScript on the frontend that allows user to access and modify data on the Oracle database.",
         image: wasteNot
     },
     {
         name: "Trije Bali",
         tools: ["React", "Vite", "TypeScript", "TailwindCSS", "HTML", "Figma", "Cloudflare"],
-        github: true,
         githubLink: "https://github.com/josedamara/website-trije-bali",
-        description: "A company website for a Balinese local coffee product, with a premium but authentic vibes. Developed using TypeScript on a React + Vite framework and deployed with Cloudflare.",
+        liveLink: "https://www.trijebali.com",
+        description: "A company website for a Balinese local coffee product, with a premium but authentic vibe. Developed using TypeScript on a React + Vite framework and deployed with Cloudflare.",
         image: trijebali
     },
     {
-        name: "UBC Open Robotics (deploying soon)",
+        name: "UBC Open Robotics",
         tools: ["HTML", "TailwindCSS", "JavaScript", "Jekyll"],
-        github: true,
         githubLink: "https://github.com/UBC-OpenRobotics/website",
+        liveLink: "https://openrobotics.ca",
         description: "UBC Open Robotics profile website that provides complete information about the club activities and organization. Built using static Jekyll framework, that allows efficient website by minimizing rendering at runtime.",
         image: ubcOpenRobotics
     }
@@ -204,8 +200,10 @@ function App() {
                             <div className="project-body">
                                 {/* Project name */}
                                 <h3>
-                                    {item.github ? (
-                                        <a className="project-link" href={item.githubLink} target="_blank" rel="noreferrer">{item.name}</a>
+                                    {item.liveLink ? (
+                                        <a className="project-link" href={item.liveLink} target="_blank" rel="noreferrer">
+                                            {item.name}<span className="external-mark" aria-hidden="true">↗</span>
+                                        </a>
                                     ) : (
                                         item.name
                                     )}
@@ -219,6 +217,19 @@ function App() {
                                 {/* Project description */}
                                 <p className="project-description">{item.description}</p>
                             </div>
+                            {/* GitHub icon and status badge */}
+                            {(item.githubLink || item.status) && (
+                                <div className="project-footer">
+                                    {item.githubLink && (
+                                        <a className="github-link" href={item.githubLink} target="_blank" rel="noreferrer" aria-label={`${item.name} on GitHub`}>
+                                            <svg viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.06-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                                            </svg>
+                                        </a>
+                                    )}
+                                    {item.status && <span className="project-status">{item.status}</span>}
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>
