@@ -247,16 +247,56 @@ header {
     opacity: 0.7;
 }
 
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+}
+
+.filter-button {
+    padding: 0.5rem 1.1rem;
+    border: 1px solid rgba(48, 51, 71, 0.25);
+    border-radius: 2rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #303347;
+    font: inherit;
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.filter-button:hover {
+    background-color: white;
+    border-color: rgba(48, 51, 71, 0.5);
+}
+
+.filter-button.active {
+    background-color: #303347;
+    border-color: #303347;
+    color: white;
+}
+
+.filter-button:focus-visible {
+    outline: 2px solid #303347;
+    outline-offset: 2px;
+}
+
+/* Wrapping flex rather than grid so a leftover card on the last row is centered */
 .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 20rem));
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: clamp(1.5rem, 4vw, 3rem);
     max-width: 70rem;
-    margin: 2rem auto 0;
+    margin: 2.5rem auto 0;
 }
 
 .project {
+    flex: 0 1 20rem;
+    min-width: 16rem;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     padding: 0.75rem;
@@ -271,10 +311,11 @@ header {
 }
 
 .project-image {
-    position: relative;
-    height: 10rem;
+    aspect-ratio: 16 / 9;
     border-radius: 1rem;
     overflow: hidden;
+    /* Thin edge so light screenshots don't blend into the white card */
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .project-image img {
@@ -282,20 +323,18 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
+    /* Tone colors down a little so neighbours don't clash; full color on hover */
+    filter: saturate(0.7);
+    transition: filter 0.3s ease-in-out;
 }
 
-/* Fade the bottom of the image into the white card */
-.project-image::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), white);
+.project:hover .project-image img {
+    filter: none;
 }
 
 .project-body {
-    position: relative;
-    margin-top: -2rem;
+    margin-top: 0.9rem;
     padding: 0 0.25rem 0.5rem;
 }
 
