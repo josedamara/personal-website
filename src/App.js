@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import logo from './img/Logo.png';
-import favicon from './img/Favicon.png';
-import profilepic from './img/Profile picture.jpg';
-import doublearrow from './img/double-arrow.png';
-import moneytrackerapp from './img/MoneyTrackerApp.png';
-import heartdisease from './img/HeartDiseasePrediction.png';
-import financialadpersonanalysis from './img/FinancialAdPersonAnalysis.png';
-import braintactoe from './img/BrainTacToe.jpeg';
-import mail from './img/mail.png';
-import instagram from './img/Instagram Logo.png';
-import linkedin from './img/Linkedin.png';
-import triplebar from './img/Triple Bar.png';
-import promptflow from './img/PromptFlow.png';
-import trijebali from './img/TrijeBali.png';
-import insightUBC from './img/InsightUBC.png';
-import wasteNot from './img/WasteNot.png';
-import ubcOpenRobotics from './img/UBCOpenRobotics.png';
+import logo from './img/Logo.webp';
+import favicon from './img/Favicon.webp';
+import profilepic from './img/ProfilePicture.webp';
+import doublearrow from './img/double-arrow.webp';
+import moneytrackerapp from './img/MoneyTrackerApp.webp';
+import heartdisease from './img/HeartDiseasePrediction.webp';
+import financialadpersonanalysis from './img/FinancialAdPersonAnalysis.webp';
+import braintactoe from './img/BrainTacToe.webp';
+import mail from './img/mail.webp';
+import instagram from './img/Instagram.webp';
+import linkedin from './img/Linkedin.webp';
+import triplebar from './img/TripleBar.webp';
+import promptflow from './img/PromptFlow.webp';
+import trijebali from './img/TrijeBali.webp';
+import insightUBC from './img/InsightUBC.webp';
+import wasteNot from './img/WasteNot.webp';
+import ubcOpenRobotics from './img/UBCOpenRobotics.webp';
 import './App.css';
 
 // List of projects made
@@ -193,9 +193,8 @@ function App() {
                         // A place containing each project
                         <div className="project" key={item.name}>
                             {/* Project image with a fade into the card */}
-                            <div
-                                className="project-image"
-                                style={{ backgroundImage: `url(${item.image})` }}>
+                            <div className="project-image">
+                                <img src={item.image} alt={`${item.name} screenshot`} loading="lazy" />
                             </div>
                             {/* Project body container */}
                             <div className="project-body">
